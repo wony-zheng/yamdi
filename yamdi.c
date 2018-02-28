@@ -1511,7 +1511,7 @@ int analyzeFLVH264VideoPacket(FLV_t *flv, FLVTag_t *flvtag, FILE *fp) {
 	int avcpackettype;
 	int i, length, offset, nSPS;
 	unsigned char *avcc;
-	unsigned char *buffer, data[flvtag->datasize];
+	unsigned char *buffer, data[flvtag->datasize < 10 * 1024 ? 10 * 2014 : flvtag->datasize];
 	h264data_t h264data;
 
 	readFLVTagData(data, sizeof(data), flvtag, fp);
